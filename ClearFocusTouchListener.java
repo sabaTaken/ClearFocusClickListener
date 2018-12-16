@@ -1,11 +1,12 @@
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-public class ClearFocusClickListener implements View.OnClickListener {
+public class ClearFocusTouchListener implements View.OnTouchListener {
     @Override
-    public void onClick(View view) {
+    public boolean onTouch(View view, MotionEvent motionEvent) {
         ViewParent parent = view.getParent();
         ViewGroup group = null;
         View child = null;
@@ -24,5 +25,6 @@ public class ClearFocusClickListener implements View.OnClickListener {
         }
 
         new Handler().postDelayed(view::requestFocus, 300);
+        return false;
     }
 }
